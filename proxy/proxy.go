@@ -329,7 +329,7 @@ func (p *Proxy) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	var decodedData []byte
 	var cont bool
 	data, err := readBody(req.Body)
-	if (reqID != "") {
+	//if (reqID != "") {
 		// Process the request, see if any rules match it.
 		decodedData, err := decodeBody(data, req.Header.Get("content-type"),
 			req.Header.Get("content-encoding"))
@@ -350,7 +350,7 @@ func (p *Proxy) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		if !cont {
 			return
 		}
-	}
+	//}
 
 	var host = p.lb.GetHost()
 	globallog.WithFields(logrus.Fields{
@@ -405,7 +405,7 @@ func (p *Proxy) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	rule = NopRule
 	data, err = readBody(resp.Body)
 	resp.Body.Close()
-	if (reqID != "") {
+	//if (reqID != "") {
 		decodedData, err = decodeBody(data, resp.Header.Get("content-type"),
 			resp.Header.Get("content-encoding"))
 
@@ -427,7 +427,7 @@ func (p *Proxy) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		if !cont {
 			return
 		}
-	}
+	//}
 
 	//return resp to caller
 	for k, v := range resp.Header {

@@ -134,7 +134,7 @@ func (r *Router) Reset(w http.ResponseWriter, req *http.Request, _ httprouter.Pa
 
 // restHello is just a demo REST API function
 func restHello(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
-	w.Write([]byte("Hello, I am " + config.NAME))
+	w.Write([]byte("Hello User, I am " + config.NAME))
 }
 
 // Overwrite the load balancer pool for a given service name
