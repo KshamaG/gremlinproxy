@@ -331,7 +331,8 @@ func (p *Proxy) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	data, err := readBody(req.Body)
 	//if (reqID != "") {
 		// Process the request, see if any rules match it.
-		decodedData, err := decodeBody(data, req.Header.Get("content-type"),
+		//decodedData, err := decodeBody(data, req.Header.Get("content-type"),
+		decodedData, err = decodeBody(data, req.Header.Get("content-type"),
 			req.Header.Get("content-encoding"))
 		if err != nil {
 			globallog.WithFields(logrus.Fields{
@@ -346,7 +347,8 @@ func (p *Proxy) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 			// Get the rule
 			rule = p.getRule(Request, reqID, decodedData)
 		}
-		cont := p.executeRequestRule(reqID, rule, req, decodedData, w)
+		//cont := p.executeRequestRule(reqID, rule, req, decodedData, w)
+		cont = p.executeRequestRule(reqID, rule, req, decodedData, w)
 		if !cont {
 			return
 		}
