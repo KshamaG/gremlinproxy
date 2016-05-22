@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/ResilienceTesting/gremlinproxy/config"
-	"github.com/ResilienceTesting/gremlinproxy/router"
+	"github.com/KshamaG/gremlinproxy/config"
+	"github.com/KshamaG/gremlinproxy/router"
 	"net"
 	"os"
 
