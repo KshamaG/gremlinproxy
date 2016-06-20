@@ -204,6 +204,11 @@ func (p *Proxy) Run() {
 		if err != nil {
 			globallog.Error(err.Error())
 		}
+	case "https":
+		err := http.ListenAndServeTLS(glueHostAndPort(p.bindhost, p.port),  "cert.pem", "key.pem", p)
+		if err != nil {
+			globallog.Error(err.Error())
+		}	
 		break
 	default:
 		panic(p.Protocol + " not supported")
